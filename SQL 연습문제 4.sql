@@ -169,7 +169,15 @@ JOIN Customers C ON B.customer_id = C.customer_id
 ORDER BY B.booking_date ASC
 LIMIT 1;
 
-# 4-19. 각 영화의 장르별로 개봉일이 가장 최근인 영화의 제목을 조회하시오.
+# 4-19. 각 영화의 장르별로 개봉일이 가장 최근인 영화의 제목을 조회하시오. ***** 절안에 절 넣기 여기서부터 공부 좀 더 하는게 좋을 듯
+s
+
+
+SELECT GENRE, TILTE, RELEASE_DATE
+FROM MOVIES
+where ROUP BY GENRE;
+
+
 SELECT 
 	genre, title, release_date
 FROM Movies
