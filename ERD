@@ -1,0 +1,23 @@
+# ERD 실습 3
+CREATE TABLE IF NOT EXISTS `Shopping`.`Orderitems` (
+  `itemNo` INT NOT NULL AUTO_INCREMENT,
+  `orderNo` CHAR(11) NOT NULL,
+  `prodNo` INT NOT NULL,
+  `cateNo` INT NOT NULL,
+  `itemPrice` INT NOT NULL,
+  `itemDiscount` TINYINT NULL,
+  `itemCount` INT NULL DEFAULT 1,
+  PRIMARY KEY (`itemNo`, `prodNo`, `orderNo`),
+  INDEX `fk_Orderitems_Products1_idx` (`prodNo`, `cateNo` ASC) VISIBLE,
+  INDEX `fk_Orderitems_Orders1_idx` (`orderNo` ASC) VISIBLE,
+  CONSTRAINT `fk_Orderitems_Products1`
+    FOREIGN KEY (`prodNo`, `cateNo`)
+    REFERENCES `Shopping`.`Products` (`prodNo`, `cateNo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Orderitems_Orders1`
+    FOREIGN KEY (`orderNo`)
+    REFERENCES `Shopping`.`Orders` (`orderNo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
